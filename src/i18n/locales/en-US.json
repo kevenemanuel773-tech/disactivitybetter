@@ -25,8 +25,12 @@
     "id": "ID"
   },
   "pagination": {
+    "label": "Pagination",
     "previous": "Previous",
     "next": "Next",
+    "previousAria": "Go to previous page",
+    "nextAria": "Go to next page",
+    "morePages": "More pages",
     "goToPage": "Go to page:",
     "of": "of"
   },

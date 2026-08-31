@@ -1,0 +1,132 @@
+{
+  "app": {
+    "title": "Disactivity"
+  },
+  "search": {
+    "placeholder": "Buscar jogos por nome ou ID...",
+    "button": "Buscar"
+  },
+  "actions": {
+    "refresh": "Atualizar",
+    "run": "Iniciar",
+    "stop": "Parar"
+  },
+  "loading": {
+    "games": "Carregando jogos do Discord..."
+  },
+  "favorites": {
+    "title": "Favoritos",
+    "add": "Adicionar aos favoritos",
+    "remove": "Remover dos favoritos"
+  },
+  "gameCard": {
+    "running": "Em execução",
+    "executables": "Executáveis",
+    "id": "ID"
+  },
+  "pagination": {
+    "label": "Paginação",
+    "previous": "Anterior",
+    "next": "Próxima",
+    "previousAria": "Ir para a página anterior",
+    "nextAria": "Ir para a próxima página",
+    "morePages": "Mais páginas",
+    "goToPage": "Ir para a página:",
+    "of": "de"
+  },
+  "footer": {
+    "favorite": "favorito",
+    "favorites": "favoritos",
+    "showing": "Exibindo",
+    "game": "jogo",
+    "games": "jogos",
+    "page": "Página",
+    "noGames": "Nenhum jogo para exibir"
+  },
+  "emptyState": {
+    "noGamesFound": "Nenhum jogo corresponde à sua busca."
+  },
+  "toast": {
+    "refreshed": {
+      "title": "Lista atualizada",
+      "description": "{{count}} jogos carregados da API do Discord."
+    },
+    "loadedFromCache": {
+      "title": "Dados carregados do cache",
+      "description": "{{count}} jogos carregados do cache."
+    },
+    "error": {
+      "title": "Erro",
+      "fetchFailed": "Não foi possível buscar os jogos: {{error}}"
+    },
+    "cannotStartGame": {
+      "title": "Não é possível iniciar o jogo",
+      "noExecutables": "Este jogo não tem executáveis definidos."
+    },
+    "gameStarted": {
+      "title": "Jogo iniciado",
+      "description": "{{name}} está em execução."
+    },
+    "failedToStartGame": {
+      "title": "Não foi possível iniciar o jogo"
+    },
+    "gameStopped": {
+      "title": "Jogo encerrado",
+      "description": "{{name}} foi encerrado."
+    },
+    "failedToStopGame": {
+      "title": "Não foi possível encerrar o jogo"
+    },
+    "addedToFavorites": {
+      "title": "Adicionado aos favoritos"
+    },
+    "removedFromFavorites": {
+      "title": "Removido dos favoritos"
+    },
+    "failedToUpdateFavorites": {
+      "title": "Não foi possível atualizar os favoritos"
+    },
+    "updateAvailable": {
+      "title": "Atualização disponível!",
+      "description": "A versão {{version}} está disponível. Clique no botão de atualização para instalá-la."
+    },
+    "updateDownloading": {
+      "title": "Baixando atualização...",
+      "description": "Baixando a versão {{version}} ({{progress}}%)"
+    },
+    "updateReady": {
+      "title": "Atualização pronta",
+      "description": "A versão {{version}} foi baixada. Reinicie o aplicativo para aplicá-la."
+    },
+    "updateInstalling": {
+      "title": "Instalando atualização...",
+      "description": "Aguarde enquanto a atualização é instalada."
+    },
+    "updateError": {
+      "title": "Erro na atualização",
+      "description": "Não foi possível atualizar: {{error}}"
+    },
+    "updateNoUpdates": {
+      "title": "Nenhuma atualização disponível",
+      "description": "Você já está usando a versão mais recente."
+    },
+    "updateCheckFailed": {
+      "title": "Falha ao verificar atualizações",
+      "description": "Não foi possível verificar se há atualizações: {{error}}"
+    }
+  },
+  "theme": {
+    "toggleLight": "Ativar tema claro",
+    "toggleDark": "Ativar tema escuro"
+  },
+  "updater": {
+    "tooltip": "Atualização disponível — clique para instalar",
+    "downloading": "Baixando...",
+    "restart": "Reiniciar para atualizar"
+  },
+  "taskManager": {
+    "title": "Jogos em execução",
+    "stopAll": "Parar todos os jogos",
+    "noGames": "Nenhum jogo em execução"
+  }
+}

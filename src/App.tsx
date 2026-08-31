@@ -174,7 +174,7 @@ export default function GameLauncher() {
                 return next
             })
             toast.success(t("toast.gameStopped.title"), {
-                description: t("toast.gameStopped.description", { name: game?.name || "Game" }),
+                description: t("toast.gameStopped.description", { name: game?.name || t("footer.game") }),
             })
         } catch (error) {
             toast.error(t("toast.failedToStopGame.title"), {

@@ -273,8 +273,8 @@ export function TitleBar({ runningGames = new Map(), onStopGame }: TitleBarProps
         >
             {/* Title */}
             <div className="flex items-center gap-2 flex-1 min-w-0" data-tauri-drag-region>
-                <img className="h-5 w-5 pointer-events-none" src="./icon.png" alt="App icon"/>
-                <span className="font-semibold text-sm text-foreground pointer-events-none truncate max-sm:hidden">Disactivity</span>
+                <img className="h-5 w-5 pointer-events-none" src="./icon.png" alt={t("app.title")}/>
+                <span className="font-semibold text-sm text-foreground pointer-events-none truncate max-sm:hidden">{t("app.title")}</span>
             </div>
 
             <div
@@ -385,7 +385,13 @@ export function TitleBar({ runningGames = new Map(), onStopGame }: TitleBarProps
                     </TooltipProvider>
                 )}
 
-                <Button variant="secondary" size="icon" onClick={toggleTheme} className="h-8 w-8 max-sm:h-7 max-sm:w-7">
+                <Button
+                    variant="secondary"
+                    size="icon"
+                    onClick={toggleTheme}
+                    aria-label={isDark ? t("theme.toggleLight") : t("theme.toggleDark")}
+                    className="h-8 w-8 max-sm:h-7 max-sm:w-7"
+                >
                     {isDark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
                 </Button>
 
