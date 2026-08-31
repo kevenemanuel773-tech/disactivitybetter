@@ -119,6 +119,17 @@
     "toggleLight": "Switch to light mode",
     "toggleDark": "Switch to dark mode"
   },
+  "settings": {
+    "title": "Settings",
+    "open": "Open settings",
+    "language": "Language",
+    "appearance": "Appearance",
+    "languages": {
+      "ptBR": "Português (Brasil)",
+      "enUS": "English",
+      "esES": "Español"
+    }
+  },
   "updater": {
     "tooltip": "Update available - click to install",
     "downloading": "Downloading...",

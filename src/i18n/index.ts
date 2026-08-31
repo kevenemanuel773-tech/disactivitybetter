@@ -27,8 +27,10 @@ i18n
       escapeValue: false, // React already escapes values
     },
     detection: {
-      order: ['navigator', 'htmlTag', 'localStorage'],
-      caches: ['localStorage'],
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      lookupLocalStorage: 'disactivityLanguage',
+      // Automatic detection stays uncached; only explicit settings choices are persisted.
+      caches: [],
     },
   }).catch(console.error);
 

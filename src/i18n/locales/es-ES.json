@@ -119,6 +119,17 @@
     "toggleLight": "Cambiar a modo claro",
     "toggleDark": "Cambiar a modo oscuro"
   },
+  "settings": {
+    "title": "Configuración",
+    "open": "Abrir configuración",
+    "language": "Idioma",
+    "appearance": "Apariencia",
+    "languages": {
+      "ptBR": "Português (Brasil)",
+      "enUS": "English",
+      "esES": "Español"
+    }
+  },
   "updater": {
     "tooltip": "Actualización disponible - clic para instalar",
     "downloading": "Descargando...",

@@ -12,7 +12,10 @@ import {
     RotateCw,
     Loader2,
     Activity,
-    StopCircle, SquareActivity
+    StopCircle,
+    SquareActivity,
+    Settings,
+    Languages,
 } from "lucide-react"
 
 import { getCurrentWindow } from "@tauri-apps/api/window"
@@ -26,12 +29,23 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import type { Game } from "@/components/game-card"
 
 type UpdateState = "idle" | "checking" | "available" | "downloading" | "ready" | "error"
+type SupportedLanguage = "pt-BR" | "en-US" | "es-ES"
+
+function getSupportedLanguage(language: string): SupportedLanguage {
+    const baseLanguage = language.toLowerCase().split("-")[0]
+
+    if (baseLanguage === "pt") return "pt-BR"
+    if (baseLanguage === "es") return "es-ES"
+    return "en-US"
+}
 
 interface RunningGameInfo {
     game: Game
@@ -45,10 +59,11 @@ interface TitleBarProps {
 }
 
 export function TitleBar({ runningGames = new Map(), onStopGame }: TitleBarProps) {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const [isHovered, setIsHovered] = useState(false)
     const [isDark, setIsDark] = useState(false)
     const [, setTick] = useState(0)
+    const currentLanguage = getSupportedLanguage(i18n.resolvedLanguage || i18n.language)
 
     // Tick every second to update elapsed times in the task manager
     useEffect(() => {
@@ -106,6 +121,15 @@ export function TitleBar({ runningGames = new Map(), onStopGame }: TitleBarProps
         setIsDark(!isDark)
         document.documentElement.classList.toggle("dark")
     }
+
+    const handleLanguageChange = (language: string) => {
+        i18n.services.languageDetector?.cacheUserLanguage?.(language, ["localStorage"])
+        i18n.changeLanguage(language).catch(console.error)
+    }
+
+    useEffect(() => {
+        document.documentElement.lang = currentLanguage
+    }, [currentLanguage])
 
     const checkForUpdates = async () => {
         setUpdateState("checking")
@@ -373,15 +397,51 @@ export function TitleBar({ runningGames = new Map(), onStopGame }: TitleBarProps
                     </TooltipProvider>
                 )}
 
-                <Button
-                    variant="secondary"
-                    size="icon"
-                    onClick={toggleTheme}
-                    aria-label={isDark ? t("theme.toggleLight") : t("theme.toggleDark")}
-                    className="h-8 w-8 max-sm:h-7 max-sm:w-7"
-                >
-                    {isDark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
-                </Button>
+                <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button
+                            variant="secondary"
+                            size="icon"
+                            aria-label={t("settings.open")}
+                            title={t("settings.open")}
+                            className="h-8 w-8 max-sm:h-7 max-sm:w-7"
+                        >
+                            <Settings className="h-5 w-5" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-72">
+                        <DropdownMenuLabel className="flex items-center gap-2 font-medium text-foreground">
+                            <Settings className="h-4 w-4" />
+                            {t("settings.title")}
+                        </DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuLabel className="flex items-center gap-2">
+                            <Languages className="h-4 w-4" />
+                            {t("settings.language")}
+                        </DropdownMenuLabel>
+                        <DropdownMenuRadioGroup
+                            value={currentLanguage}
+                            onValueChange={handleLanguageChange}
+                            aria-label={t("settings.language")}
+                        >
+                            <DropdownMenuRadioItem value="pt-BR">
+                                <span lang="pt-BR">{t("settings.languages.ptBR")}</span>
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="en-US">
+                                <span lang="en-US">{t("settings.languages.enUS")}</span>
+                            </DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem value="es-ES">
+                                <span lang="es-ES">{t("settings.languages.esES")}</span>
+                            </DropdownMenuRadioItem>
+                        </DropdownMenuRadioGroup>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuLabel>{t("settings.appearance")}</DropdownMenuLabel>
+                        <DropdownMenuItem className="cursor-pointer" onSelect={() => toggleTheme()}>
+                            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                            {isDark ? t("theme.toggleLight") : t("theme.toggleDark")}
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
 
                 {/* Minimize - Yellow */}
                 <button

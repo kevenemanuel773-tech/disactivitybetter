@@ -119,6 +119,17 @@
     "toggleLight": "Ativar tema claro",
     "toggleDark": "Ativar tema escuro"
   },
+  "settings": {
+    "title": "Configurações",
+    "open": "Abrir configurações",
+    "language": "Idioma",
+    "appearance": "Aparência",
+    "languages": {
+      "ptBR": "Português (Brasil)",
+      "enUS": "English",
+      "esES": "Español"
+    }
+  },
   "updater": {
     "tooltip": "Atualização disponível — clique para instalar",
     "downloading": "Baixando...",
